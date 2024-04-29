@@ -47,9 +47,9 @@ class Regions(object):
         Parameters
         ----------
 
-        region_file: string or pyregion.ShapeList
-            Path to a ds9 regions file or a ShapeList already read
-            in by pyregion.
+        region_file: string or regions.Regions
+            Path to a ds9 regions file or a Regions already read
+            in by regions.
 
         layer: str, optional
             The name of the layer
@@ -83,17 +83,17 @@ def ds9(region_file, header, zorder=3, **kwargs):
     """
 
     try:
-        import pyregion
+        import regions as astro_regions
     except Exception:
-        raise ImportError("The pyregion package is required to load region files")
+        raise ImportError("The regions package is required to load region files")
 
     # read region file
     if isinstance(region_file, str):
-        rr = pyregion.open(region_file)
-    elif isinstance(region_file, pyregion.ShapeList):
+        rr = astro_regions.Regions.read(region_file)
+    elif isinstance(region_file, astro_regions.Regions):
         rr = region_file
     else:
-        raise Exception("Invalid type for region_file: %s - should be string or pyregion.ShapeList" % type(region_file))
+        raise Exception("Invalid type for region_file: %s - should be string or regions.Regions" % type(region_file))
 
     if isinstance(header, wcs.WCS):
         header = header.to_header()
@@ -101,7 +101,7 @@ def ds9(region_file, header, zorder=3, **kwargs):
     # convert coordinates to image coordinates
     rrim = rr.as_imagecoord(header)
 
-    # pyregion and aplpy both correct for the FITS standard origin=1,1
+    # regions and aplpy both correct for the FITS standard origin=1,1
     # need to avoid double-correcting. Also, only some items in `coord_list`
     # are pixel coordinates, so which ones should be corrected depends on the
     # shape.

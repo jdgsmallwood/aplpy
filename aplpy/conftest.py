@@ -29,7 +29,7 @@ def pytest_configure(config):
         # Customize the following lines to add/remove entries from the list of
         # packages for which version numbers are displayed when running the tests.
         PYTEST_HEADER_MODULES['Astropy'] = 'astropy'
-        PYTEST_HEADER_MODULES['pyregion'] = 'pyregion'
+        PYTEST_HEADER_MODULES['regions'] = 'regions'
         PYTEST_HEADER_MODULES['PyAVM'] = 'PyAVM'
         PYTEST_HEADER_MODULES['reproject'] = 'reproject'
         del PYTEST_HEADER_MODULES['h5py']

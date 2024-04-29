@@ -47,3 +47,5 @@ distribute-*.tar.gz
 
 docs/api
 .tmp
+.venv/
+test_label_format.png

@@ -30,3 +30,29 @@ You can install APLpy and all its dependencies with::
    :target: https://codecov.io/gh/aplpy/aplpy
 .. |Documentation Status| image:: https://img.shields.io/badge/docs-latest-brightgreen.svg?style=flat
    :target: https://aplpy.readthedocs.io/en/latest/
+
+
+Installing the development version
+----------------------------------
+
+You can install the development version of APLpy by cloning the GitHub repository and running
+
+```
+pip install .
+```
+
+from the terminal.
+
+To run the tests, two further packages are required:
+
+```
+pip install pytest-astropy pytest-mpl
+```
+
+The test suite can be run using:
+
+```
+pytest .
+```
+
+
